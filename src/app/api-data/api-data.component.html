@@ -1,0 +1,39 @@
+<!-- <div class="container">
+    <h1>API Data</h1>
+    <div *ngIf="data; else loading">
+        <pre>{{ data | json }}</pre>
+    </div>
+    <ng-template #loading>
+        <p>Loading data...</p>
+    </ng-template>
+</div> -->
+
+<!-- <div class="container api-data-container">
+    <h2>API Data</h2>
+    <div *ngFor="let item of data" class="post">
+        <h3>Title: {{ item.title }}</h3>
+        <p>{{ item.body }}</p>
+    </div>
+</div> -->
+
+<div class="container api-data-container">
+    <h2>Dog Breeds</h2>
+    
+    <div *ngFor="let item of paginatedData" class="post">
+      <h3>{{ item.id }}. {{ item.name }}</h3>
+      <p><b>Breed:</b> {{ item.breed_group }}</p>
+      <p><b>Life Span:</b> {{ item.life_span }}</p>
+      <p><b>Breed Group:</b> {{ item.breed_group }}</p>
+      <p><b>Breed For:</b> {{ item.bred_for }}</p>
+      <p><b>Temperament:</b> {{ item.temperament }}</p>
+
+    </div>
+  
+    <div class="pagination-controls">
+      <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">Previous</button>
+      <button (click)="goToNextPage()" [disabled]="currentPage >= totalPages">Next</button>
+      <p>Page {{ currentPage }} of {{ totalPages }}</p>
+    </div>
+  </div>
+  
+  

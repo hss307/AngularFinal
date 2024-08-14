@@ -1,0 +1,75 @@
+<form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" class="container">
+    <!-- Name Field -->
+    <label for="name">Name:</label>
+    <input id="name" type="text" formControlName="name">
+    <div *ngIf="feedbackForm.get('name')?.invalid && feedbackForm.get('name')?.touched">
+      <small *ngIf="feedbackForm.get('name')?.errors?.['required']">Name is required</small>
+    </div>
+  
+    <!-- Email Field -->
+    <label for="email">Email:</label>
+    <input id="email" type="email" formControlName="email">
+    <div *ngIf="feedbackForm.get('email')?.invalid && feedbackForm.get('email')?.touched">
+      <small *ngIf="feedbackForm.get('email')?.errors?.['required']">Email is required</small>
+      <small *ngIf="feedbackForm.get('email')?.errors?.['email']">Invalid email format</small>
+    </div>
+  
+    <!-- Feedback Field -->
+    <label for="feedback">Feedback:</label>
+    <textarea id="feedback" formControlName="feedback"></textarea>
+    <div *ngIf="feedbackForm.get('feedback')?.invalid && feedbackForm.get('feedback')?.touched">
+      <small *ngIf="feedbackForm.get('feedback')?.errors?.['required']">Feedback is required</small>
+      <small *ngIf="feedbackForm.get('feedback')?.errors?.['minlength']">
+        Feedback must be at least 10 characters long
+      </small>
+    </div>
+  
+    <!-- Phone Number Field -->
+    <label for="phone">Phone Number:</label>
+    <input id="phone" type="text" formControlName="phone">
+    <div *ngIf="feedbackForm.get('phone')?.invalid && feedbackForm.get('phone')?.touched">
+      <small *ngIf="feedbackForm.get('phone')?.errors?.['required']">Phone number is required</small>
+      <small *ngIf="feedbackForm.get('phone')?.errors?.['pattern']">Invalid phone number format</small>
+    </div>
+  
+    <!-- Address Field -->
+    <label for="address">Address:</label>
+    <textarea id="address" formControlName="address"></textarea>
+    <div *ngIf="feedbackForm.get('address')?.invalid && feedbackForm.get('address')?.touched">
+      <small *ngIf="feedbackForm.get('address')?.errors?.['required']">Address is required</small>
+    </div>
+  
+    <!-- Date of Birth Field -->
+    <label for="dob">Date of Birth:</label>
+    <input id="dob" type="date" formControlName="dob">
+    <div *ngIf="feedbackForm.get('dob')?.invalid && feedbackForm.get('dob')?.touched">
+      <small *ngIf="feedbackForm.get('dob')?.errors?.['required']">Date of Birth is required</small>
+    </div>
+  
+    <!-- Gender Dropdown -->
+    <label for="gender">Gender:</label>
+    <select id="gender" formControlName="gender">
+      <option value="">Select Gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
+    <div *ngIf="feedbackForm.get('gender')?.invalid && feedbackForm.get('gender')?.touched">
+      <small *ngIf="feedbackForm.get('gender')?.errors?.['required']">Gender is required</small>
+    </div>
+  
+    <!-- Terms and Conditions Checkbox -->
+    <label>
+      <input type="checkbox" formControlName="agreeTerms">
+      I agree to the terms and conditions
+    </label>
+    <div *ngIf="feedbackForm.get('agreeTerms')?.invalid && feedbackForm.get('agreeTerms')?.touched">
+      <small *ngIf="feedbackForm.get('agreeTerms')?.errors?.['requiredTrue']">
+        You must agree to the terms and conditions
+      </small>
+    </div>
+  
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="feedbackForm.invalid">Submit</button>
+  </form>
+  
